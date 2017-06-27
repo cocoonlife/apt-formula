@@ -28,6 +28,7 @@
     - user: root
     - group: root
     - clean: {{ clean_sources_list_d }}
+    - exclude_pat: E@(cocoon.list)|(saltstack.list)|(aptly.list){% for repo, args in repositories.items() %}{%- for type in args.type|d(['binary']) %}|({{ repo }}-{{ type }}.list){%- endfor %}{% endfor %}
 
 
 
